@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main(){
+    int num;
+    printf("ENTER NUMBER OF PROCESSES:");
+    scanf("%d",&num);
+    int ariv[num],burs[num],i,comp[num],tat[num],wat[num],sum1=0,sum2=0;
+    printf("ENTER ARRIVAL TIME:\n");
+    for(i=0;i<num;i++)
+    	scanf("%d",&ariv[i]);
+    printf("ENTER BURST TIME:\n");
+    for(i=0;i<num;i++)
+    	scanf("%d",&burs[i]);
+    printf("AT\tBT\tCT\tTAT\tWT\n");
+    for(i=0;i<num;i++){
+        comp[i]=burs[i]+comp[i-1];
+        tat[i]=comp[i]-ariv[i];
+        wat[i]=tat[i]-burs[i];
+        printf("%d\t%d\t%d\t%d\t%d\n",ariv[i],burs[i],comp[i],tat[i],wat[i]);
+       }
+        for(i=0;i<num;i++){
+        sum1=sum1+wat[i];
+        sum2=sum2+tat[i];
+      }
+   printf("AVERAGE WAITING PER PROCESS:%d\n",sum1/num);
+   printf("AVERAGE TURNAROUND PER PROCESS:%d\n",sum2/num);
+ }
+
+   
+    
